@@ -33,7 +33,9 @@ namespace Limcap.Dux {
 		protected virtual string FixKey( string k ) {
 			return string.IsNullOrWhiteSpace( k ) ? null : k.Trim();
 		}
+		// Props stuff
 		public virtual List<char> Props { get; set; }
+		public bool HasProp( char prop ) { return Props != null && Props.Contains( prop ); }
 		//
 		// content stuff
 		[DebuggerBrowsable( DebuggerBrowsableState.Never )]
