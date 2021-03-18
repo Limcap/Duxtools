@@ -64,6 +64,7 @@ namespace Limcap.Dux {
 		public override string ToString() { return ToString( false ); }
 		public abstract string ToString( bool showKey );
 		public virtual string Preview() { return ToString( Key != null ); }
+		public abstract bool IsEmpty();
 		//
 		// conversions stuff
 		public static implicit operator Dux( string o ) { return new DuxValue( null, o, null ); }
@@ -113,7 +114,7 @@ namespace Limcap.Dux {
 			throw new DuxOperationNotAllowed( this, "Dux.SetKey" );
 		}
 		public override object Content {
-			set => SetContent(value);
+			set => SetContent( value );
 		}
 		public override Dux SetContent( object c ) {
 			throw new DuxOperationNotAllowed( this, "Dux.Content.set" );
@@ -129,7 +130,7 @@ namespace Limcap.Dux {
 				if (string.IsNullOrWhiteSpace( d.Key )) d.SetKey( _absentKey );
 				return _source.AddAndGet( d );
 			}
-			if( value is DuxCollection c ) return _source.AddAndGet( c.SetKey(_absentKey) );
+			if (value is DuxCollection c) return _source.AddAndGet( c.SetKey( _absentKey ) );
 			else return _source.AddAndGet( new DuxValue( _absentKey, value ) );
 		}
 		//
@@ -149,6 +150,7 @@ namespace Limcap.Dux {
 		//
 		// to string stuff
 		public override string ToString( bool showKey ) { return null; }
+		public override bool IsEmpty() { return true; }
 	}
 
 
@@ -210,6 +212,7 @@ namespace Limcap.Dux {
 			if (IsPrimitive) return $"{k}{Content.ToString().ToLower()}";
 			return showKey ? $"{k}\"{Content}\"" : $"{Content}";
 		}
+		public override bool IsEmpty() { return _Content is null || (_Content is string s && string.IsNullOrEmpty( s )); }
 		//
 		// debug info stuff
 #if DEBUG
@@ -321,6 +324,7 @@ namespace Limcap.Dux {
 			}
 			return $"{thisKeyStr}{thisContentStr}";
 		}
+		public override bool IsEmpty() { return Children.Count == 0; }
 		//
 		// debug info stuff
 		public override string Preview() {
