@@ -264,7 +264,7 @@ namespace Limcap.Dux {
 		}
 		public override Dux this[string k] {
 			get => GetItemByKey( k );
-			set { if (GetItemByKey( k ) is DuxNull) Add( value ); else ReplaceItemOfKey( k, value.SetKey( k ) ); }
+			set { if (GetItemByKey( k ) is DuxNull n) n.AddIfNull( value ); else ReplaceItemOfKey( k, value.SetKey( k ) ); }
 		}
 		private void ReplaceItemOfKey( string key, Dux newDux ) {
 			int i = Children.FindIndex( x => x.Key == key );
