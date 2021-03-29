@@ -11,11 +11,18 @@ namespace Limcap.Dux {
 	public abstract partial class Dux {
 
 		public static class Import {
-			public static Dux FromJson( string json ) {
+			/// <summary>
+			/// O check integrity ainda não esta funcionando direito. pobservei um caso que deu erro, entao adicionei
+			/// um parametro checkIntegrity=false como padrao para nao fazer essa validação por enquanto.
+			/// </summary>
+			/// <param name="json"></param>
+			/// <param name="checkIntegrity"></param>
+			/// <returns></returns>
+			public static Dux FromJson( string json, bool checkIntegrity=false ) {
 				var jsn = JSON.Parse( json );
-				if (CheckJsonImportIntegrity( json, jsn ))
-					return FromJSONNode( null, jsn );
-				else throw new CorruptedJsonException( jsn );
+				if( checkIntegrity && !CheckJsonImportIntegrity( json, jsn ))
+					throw new CorruptedJsonException( jsn );
+				else return FromJSONNode( null, jsn );
 			}
 
 			public static Dux FromJSONNode( string key, JSONNode jsn ) {
