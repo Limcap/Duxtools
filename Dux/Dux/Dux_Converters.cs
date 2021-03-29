@@ -122,7 +122,7 @@ namespace Limcap.Dux {
 			}
 
 			public static string GetKey( Dux dux, bool includeProps = true ) {
-				var prefix = (dux.Props != null && dux.Props.Count > 0) ? string.Join( "", dux.Props ) + '|' : "";
+				var prefix = (includeProps && dux.Props != null && dux.Props.Count > 0) ? string.Join( "", dux.Props ) + '|' : "";
 				var key = $"{prefix}{dux.Key}";
 				return key;
 			}
