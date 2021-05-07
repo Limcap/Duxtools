@@ -491,7 +491,7 @@ namespace Limcap.Dux {
 			return defaultVal;
 		}
 
-		public static int AsInt( this Dux dux, int? defaultVal = default ) {
+		public static int AsInt( this Dux dux, int? defaultVal = 0 ) {
 			if (!(dux is DuxNull)) {
 				if (dux.Content is int i) return i;
 				var str = dux.Content.ToString().Trim();
