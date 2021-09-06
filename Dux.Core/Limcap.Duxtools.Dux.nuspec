@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Limcap.Duxtools.Dux</id>
+    <version>1.0.3</version>
+    <authors>Limcap</authors>
+    <owners>Limcap</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+	<projectUrl>https://github.com/Limcap/Duxtools</projectUrl>
+    <description>Simple Json processor. Parse, create and use JSONs in a easy-to-use way, 16 times faster than Newtonsoft.JSON.
+This tool introduces a adaptation of JSON to JSONX (mix between JOSN and XML) It makes it possible to set attributes to any node.</description>
+    <tags>json xml parser</tags>
+    <repository type="git" url="https://github.com/Limcap/Duxtools" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\netstandard2.0\Limcap.Duxtools.Dux.dll" target="lib\netstandard2.0\Limcap.Duxtools.Dux.dll" />
+    <file src="bin\Release\netstandard2.0\Limcap.Duxtools.Dux.pdb" target="lib\netstandard2.0\Limcap.Duxtools.Dux.pdb" />
+    <file src="bin\Release\netstandard2.0\Limcap.Duxtools.Dux.xml" target="lib\netstandard2.0\Limcap.Duxtools.Dux.xml" />
+  </files>
+</package>

@@ -7,16 +7,14 @@ using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Limcap.Duxtools {
+	public partial class DuxView {
 
-	public static partial class DuxView {
-
-		public class DuxListView : StackPanel
-		{
+		public class ListBox : StackPanel {
 			public DuxNamedList duxList { get; private set; }
-			public event Action<DuxValueView> OnItemSelected;
-			public new List<DuxValueView> Children { get => base.Children.Cast<DuxValueView>().ToList(); }
+			public event Action<KeyValueBox> OnItemSelected;
+			public new List<KeyValueBox> Children { get => base.Children.Cast<KeyValueBox>().ToList(); }
 
-			public DuxValueView SelectedItem { get; protected set; }
+			public KeyValueBox SelectedItem { get; protected set; }
 			public int SelectedIndex { get => Children.IndexOf( SelectedItem ); }
 
 
@@ -26,7 +24,7 @@ namespace Limcap.Duxtools {
 
 
 
-			public DuxListView( DuxNamedList datamodel = null, Func<UIElement[]> customLoader = null ) {
+			public ListBox( DuxNamedList datamodel = null, Func<UIElement[]> customLoader = null ) {
 				Margin = new Thickness( 5, 5, 5, 0 );
 				duxList = datamodel ?? new DuxNamedList( null );
 				CustomLoader = customLoader;
@@ -72,7 +70,7 @@ namespace Limcap.Duxtools {
 
 			//[MethodImpl( MethodImplOptions.Synchronized )]
 			/// <summary>
-			/// Constrói todos os elementos (<see cref="DuxValueView"/>) da view (<see cref="DuxListView"/>),
+			/// Constrói todos os elementos (<see cref="KeyValueBox"/>) da view (<see cref="ListBox"/>),
 			/// baseado no modelo de dados (<see cref="DuxNamedList"/>) definido no campo <see cref="duxList"/>.
 			/// É executado imetiatamente ao construir o objeto. Pode ser chamado posteriormente se houver necessidade
 			/// de reconstruir o objeto inteiro.
@@ -82,9 +80,9 @@ namespace Limcap.Duxtools {
 				//if (duxList.Children is null) return elements;
 				foreach (Dux dux in duxList.Children) {
 					if (!(dux is DuxValue duxval)) continue;
-					var valueView = new DuxValueView( duxval );
-					valueView.OnFocus += DefineSelectedItem;
-					elements.Add( valueView );
+					var valueView = new KeyValueBox( duxval );
+					valueView.OnFocus += this.DefineSelectedItem;
+					elements.Add( (UIElement)valueView );
 					//base.Children.Add( valueView );
 				}
 				return elements.ToArray();
@@ -100,7 +98,7 @@ namespace Limcap.Duxtools {
 			public void Refresh() {
 				if (duxList.Children is null) return;
 				foreach (UIElement item in base.Children) {
-					if (!(item is DuxValueView duxval)) continue;
+					if (!(item is KeyValueBox duxval)) continue;
 					duxval.Update();
 				}
 			}
@@ -110,7 +108,7 @@ namespace Limcap.Duxtools {
 
 
 
-			public void DefineSelectedItem( DuxValueView item ) {
+			public void DefineSelectedItem( KeyValueBox item ) {
 				SelectedItem = item;
 				OnItemSelected?.Invoke( item );
 			}
@@ -133,7 +131,7 @@ namespace Limcap.Duxtools {
 
 			public void Add( Dux node ) {
 				if (node is DuxValue duxValue) {
-					var valueView = new DuxValueView( duxValue );
+					var valueView = new KeyValueBox( duxValue );
 					valueView.OnFocus += ( o ) => DefineSelectedItem( o );
 					duxList.Add( duxValue );
 					base.Children.Add( valueView );
@@ -145,7 +143,7 @@ namespace Limcap.Duxtools {
 
 
 			public void Add( UIElement element ) {
-				if (element is DuxValueView valueView) {
+				if (element is KeyValueBox valueView) {
 					valueView.OnFocus += ( o ) => DefineSelectedItem( o );
 					if (!base.Children.Contains( valueView )) base.Children.Add( valueView );
 					if (!duxList.Contains( valueView.dux )) duxList.Add( valueView.dux );
@@ -178,7 +176,7 @@ namespace Limcap.Duxtools {
 
 
 
-			public DuxListView Remove( DuxValueView viewitem ) {
+			public ListBox Remove( KeyValueBox viewitem ) {
 				duxList.Remove( viewitem.dux );
 				base.Children.Remove( viewitem );
 				return this;
@@ -187,7 +185,7 @@ namespace Limcap.Duxtools {
 
 
 
-			public DuxListView MoveSelectedUp() {
+			public ListBox MoveSelectedUp() {
 				int index = Children.IndexOf( SelectedItem );
 				base.Children.MoveUp( index );
 
@@ -202,7 +200,7 @@ namespace Limcap.Duxtools {
 
 
 
-			public DuxListView MoveSelectedDown() {
+			public ListBox MoveSelectedDown() {
 				var index = Children.IndexOf( SelectedItem );
 				base.Children.MoveDown( index );
 

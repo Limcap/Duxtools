@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Limcap.Dux {
+namespace Limcap.Duxtools {
 
 	public class ValueBox : StackPanel {
 

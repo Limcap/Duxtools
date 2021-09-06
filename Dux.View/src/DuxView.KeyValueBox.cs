@@ -5,30 +5,31 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Limcap.Duxtools
-{
+namespace Limcap.Duxtools {
+
 	public static partial class DuxView {
-		public class DuxValueView : DockPanel {
+		public class KeyValueBox : DockPanel {
+
 			public readonly Dux dux;
 			public readonly TextBlock keyBox;
 			public readonly ValueBox valueBox;
 
-			public event Action<DuxValueView> OnFocus;
-			public event Action<DuxValueView> OnChange;
-			public event Action<DuxValueView> Setup;
+			public event Action<KeyValueBox> OnFocus;
+			public event Action<KeyValueBox> OnChange;
+			public event Action<KeyValueBox> Setup;
 
 			public object customRef;
 
 
 
 
-			public DuxValueView( char kind, string key, string value, object customRef = null )
+			public KeyValueBox( char kind, string key, string value, object customRef = null )
 			: this( new DuxValue( key, value, kind ), customRef ) { }
 
 
 
 
-			public DuxValueView( DuxValue duxValue, object customRef = null ) {
+			public KeyValueBox( DuxValue duxValue, object customRef = null ) {
 				this.dux = duxValue;
 				this.customRef = customRef;
 
@@ -88,7 +89,7 @@ namespace Limcap.Duxtools
 
 
 
-			public DuxValueView Update() {
+			public KeyValueBox Update() {
 				// Atualiza os dados dos componentes da view
 				keyBox.Text = dux.Key;
 				valueBox.Value = dux.AsString();
@@ -104,7 +105,7 @@ namespace Limcap.Duxtools
 
 
 
-			public DuxValueView SetFocus() {
+			public KeyValueBox SetFocus() {
 				try {
 					//textBox.Focus();
 					valueBox.Focus();
@@ -117,7 +118,7 @@ namespace Limcap.Duxtools
 
 
 
-			public DuxValueView SetData( string key = null, string value = null ) {
+			public KeyValueBox SetData( string key = null, string value = null ) {
 				dux.SetKey( key ).SetContent( value );
 				return this;
 			}
@@ -132,7 +133,7 @@ namespace Limcap.Duxtools
 
 
 
-			public DuxValueView SetProps( params char[] props ) {
+			public KeyValueBox SetProps( params char[] props ) {
 				dux.Props = props.ToList();
 				return this;
 			}
@@ -140,7 +141,7 @@ namespace Limcap.Duxtools
 
 
 
-			public DuxValueView UnsetMod( params char[] props ) {
+			public KeyValueBox UnsetMod( params char[] props ) {
 				foreach (var p in props)
 					if (dux.Props.Contains( p ))
 						dux.Props.Remove( p );
@@ -150,7 +151,7 @@ namespace Limcap.Duxtools
 
 
 
-			public DuxValueView ToggleMod( char m ) {
+			public KeyValueBox ToggleMod( char m ) {
 				if (dux.Props.Contains( m )) dux.Props.Remove( m );
 				else dux.Props.Add( m );
 				return this;

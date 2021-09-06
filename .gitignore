@@ -8,6 +8,7 @@ bfg.jar
 *.wixpdb
 **/NotGit
 **/Thumbs.db
+.tools/*
 bin
 
 ## Ignore Visual Studio temporary files, build results, and

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+	<metadata>
+		<id>Limcap.Duxtools.Duxview</id>
+		<version>0.1.0</version>
+		<title>Dux View</title>
+		<authors>Limcap</authors>
+		<owners>Limcap</owners>
+		<developmentDependency>false</developmentDependency>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<projectUrl>https://github.com/Limcap/Duxtools</projectUrl>
+		<description>View control for the data structure Limcap.Dux, using the .NET Framework UI libraries.</description>
+		<tags>json xml parser ui control view</tags>
+		<repository type="git" url="https://github.com/Limcap/Duxtools" />
+		<frameworkAssemblies>
+			<frameworkAssembly assemblyName="PresentationCore" targetFramework=".NETFramework4.6.2" />
+			<frameworkAssembly assemblyName="PresentationFramework" targetFramework=".NETFramework4.6.2" />
+			<frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework=".NETFramework4.6.2" />
+		</frameworkAssemblies>
+		<dependencies>
+			<group targetFramework=".NETFramework4.6.2">
+				<dependency id="Limcap.Duxtools.Dux" version="1.0.3" />
+				<!--
+				<dependency id="Microsoft.CSharp" version="4.0.0" />
+				-->
+			</group>
+		</dependencies>
+		<references>
+			<group targetFramework=".NETFramework4.6.2">
+				<reference file="Limcap.Duxtools.Duxview.dll" />
+			</group>
+		</references>
+	</metadata>
+	<files>
+		<file src="bin\Release\Limcap.Duxtools.Duxview.dll" target="lib\net462\Limcap.Duxtools.Duxview.dll" />
+		<file src="bin\Release\Limcap.Duxtools.Duxview.pdb" target="lib\net462\Limcap.Duxtools.Duxview.pdb" />
+		<file src="bin\Release\Limcap.Duxtools.Duxview.xml" target="lib\net462\Limcap.Duxtools.Duxview.xml" />
+	</files>
+</package>
