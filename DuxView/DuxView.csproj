@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Limcap.Duxtools.DuxView.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>DuxView.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
   </PropertyGroup>
   <ItemGroup>
@@ -66,9 +66,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Limcap.Duxtools.Duxview.nuspec" />
-    <None Include="Limcap.Duxtools.DuxView.snk" />
-    <None Include="NuGet_Pack.cmd" />
+    <None Include="DuxView.nupkg.create.cmd" />
+    <None Include="Duxview.nuspec" />
+    <None Include="DuxView.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

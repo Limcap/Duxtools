@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dux", "Dux\Dux.csproj", "{DE149986-5B8B-4E81-9F1C-1E8176F96B3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dux.tests", "Dux.tests\Dux.tests.csproj", "{A02617F9-E17D-40A2-BEEE-0121191ADCA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dux manual tests", "Dux manual tests\Dux manual tests.csproj", "{A02617F9-E17D-40A2-BEEE-0121191ADCA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dux", "Dux\Dux.csproj", "{BA0E52FF-71D6-4480-BFDE-7026D8D334DC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dux.Core", "Dux.Core\Dux.Core.csproj", "{BA0E52FF-71D6-4480-BFDE-7026D8D334DC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dux.View", "Dux.View\Dux.View.csproj", "{CB303CA2-FB29-463A-AA07-F4EB52FACA03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuxView", "DuxView\DuxView.csproj", "{CB303CA2-FB29-463A-AA07-F4EB52FACA03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
