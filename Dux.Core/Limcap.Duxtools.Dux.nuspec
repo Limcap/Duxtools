@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Limcap.Duxtools.Dux</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <authors>Limcap</authors>
     <owners>Limcap</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Limcap.Duxtools</RootNamespace>
     <AssemblyName>Limcap.Duxtools.Dux</AssemblyName>
-    <Version>1.0.3.0</Version>
+    <Version>1.0.4.0</Version>
     <Authors>Limcap</Authors>
     <Company>Limcap</Company>
     <Product>Dux</Product>
@@ -16,6 +16,8 @@ This tool introduces a adaptation of JSON to JSONX (mix between JOSN and XML) It
     <PackageTags>json xml parser</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>Limcap.Duxtools.Dux</PackageId>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Limcap.Duxtools.Dux.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
