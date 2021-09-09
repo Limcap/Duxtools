@@ -11,11 +11,14 @@
     <Description>Simple Json processor. Parse, create and use JSONs in a easy-to-use way, 16 times faster than Newtonsoft.JSON.
 This tool introduces a adaptation of JSON to JSONX (mix between JOSN and XML) It makes it possible to set attributes to any node.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/ledski31/Dux</RepositoryUrl>
+    <RepositoryUrl>https://github.com/ledski31/Duxtools</RepositoryUrl>
     <RepositoryType>private</RepositoryType>
     <PackageTags>json xml parser</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>Limcap.Duxtools.Dux</PackageId>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Limcap.Duxtools.Dux.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
