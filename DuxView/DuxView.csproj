@@ -61,14 +61,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Limcap.Duxtools.Dux">
-      <Version>1.0.4</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="DuxView.nupkg.create.cmd" />
     <None Include="Duxview.nuspec" />
     <None Include="DuxView.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Limcap.Duxtools.Dux">
+      <Version>1.0.5</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

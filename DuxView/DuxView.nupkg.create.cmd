@@ -1,1 +1,1 @@
-nuget pack Limcap.Duxtools.Duxview.nuspec & pause
+nuget pack Duxview.nuspec & pause

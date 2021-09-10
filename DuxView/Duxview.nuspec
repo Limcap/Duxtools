@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
 	<metadata>
 		<id>Limcap.Duxtools.Duxview</id>
-		<version>1.0.4</version>
+		<version>1.0.5</version>
 		<title>Dux View</title>
 		<authors>Limcap</authors>
 		<owners>Limcap</owners>
@@ -19,7 +19,7 @@
 		</frameworkAssemblies>
 		<dependencies>
 			<group targetFramework=".NETFramework4.6.2">
-				<dependency id="Limcap.Duxtools.Dux" version="1.0.4" />
+				<dependency id="Limcap.Duxtools.Dux" version="1.0.5"/>
 				<!--
 				<dependency id="Microsoft.CSharp" version="4.0.0" />
 				-->
