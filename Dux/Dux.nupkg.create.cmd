@@ -1,1 +1,3 @@
-nuget pack Dux.nuspec & pause
+@echo off
+nuget pack Dux.nuspec
+pause
