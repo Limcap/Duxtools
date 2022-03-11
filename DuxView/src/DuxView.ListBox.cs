@@ -77,15 +77,79 @@ namespace Limcap.Duxtools {
 			/// </summary>
 			private UIElement[] DefaultLoader() {
 				var elements = new List<UIElement>();
-				//if (duxList.Children is null) return elements;
+				StackPanel parentPanel = null;
+				StackPanel currentPanel = null;
 				foreach (Dux dux in duxList.Children) {
 					if (!(dux is DuxValue duxval)) continue;
-					var valueView = new KeyValueBox( duxval );
-					valueView.OnFocus += this.DefineSelectedItem;
-					elements.Add( (UIElement)valueView );
-					//base.Children.Add( valueView );
+					if (duxval.HasProp( '{' ) ) {
+						StartGroup( duxval.Key, duxval );
+					}
+					else if (duxval.HasProp( '}' ) ) {
+						EndGroup();
+					}
+					else if (duxval.HasProp('-') ) {
+						Add( NewTitle( duxval.Key ) );
+						//Add( new Separator() { Margin = new Thickness( 5 ) } );
+					}
+					else if (duxval.Key is null || duxval.Key.Trim() == "") {
+						Add( new Border() { Margin = new Thickness( 5 ) } );
+					}
+					else {
+						var valueView = new KeyValueBox( duxval );
+						valueView.OnFocus += this.DefineSelectedItem;
+						Add( valueView );
+					}
 				}
 				return elements.ToArray();
+
+				void Add( UIElement item ) {
+					if (currentPanel is null) elements.Add( item );
+					else currentPanel.Children.Add( item );
+				}
+
+				void StartGroup( string header, string tooltip ) {
+					var group = new StackPanel() { Orientation = Orientation.Vertical };
+					group.Children.Add( NewTitle( header ) );
+					var panel = new StackPanel() { Margin = new Thickness( 20, 0, 0, 10 ) };
+					group.Children.Add( panel );
+					if (tooltip != null && tooltip.Trim().Length > 0) group.ToolTip = tooltip;
+					Add( group );
+					parentPanel = currentPanel; currentPanel = panel;
+				}
+
+				void EndGroup() {
+					currentPanel = parentPanel;
+					parentPanel = null;
+				}
+
+				Panel NewTitle( string titleText ) {
+					var titlePanel = new DockPanel() {
+						LastChildFill = true,
+						HorizontalAlignment = HorizontalAlignment.Stretch,
+						//Orientation = Orientation.Horizontal,
+						//Background = new SolidColorBrush( Color.FromArgb( 15, 0, 0, 0 ) ),
+						Margin = new Thickness( 0, elements.Count == 0 ? 0 : 20, 0, 10 )
+					};
+					if (!string.IsNullOrEmpty( titleText )) {
+						var label = new Label() {
+							Content = titleText,
+							FontWeight = FontWeight.FromOpenTypeWeight( 600 ),
+							Padding = new Thickness( 0,0,5,0 )
+						};
+						DockPanel.SetDock( label, Dock.Left );
+						label.FontSize *= 1.25;
+						titlePanel.Children.Add( label );
+					}
+					var line = new Separator() {
+						BorderThickness = new Thickness( 2 ),
+						BorderBrush = Brushes.DarkGray,
+						Height = 2,
+						Margin = new Thickness( 0, 2, 0, 0 )
+					};
+					titlePanel.Children.Add( line );
+					DockPanel.SetDock( line, Dock.Right );
+					return titlePanel;
+				}
 			}
 
 
@@ -193,7 +257,8 @@ namespace Limcap.Duxtools {
 				// MoveUp no dataModel, chamamos o Move, especificando qual item e qual index, pois assim tem-se
 				// certeza de que está movendo o item certo.
 				//_dataModel.MoveUp( index );
-				duxList.Move( SelectedItem.dux, index - 1 );
+				if( SelectedItem != null )
+					duxList.Move( SelectedItem.dux, index - 1 );
 				return this;
 			}
 

@@ -14,7 +14,7 @@ namespace Limcap.Duxtools {
 
 	public partial class DuxView {
 		public static readonly Thickness keyMargin = new Thickness( 0, 0, 10, 0 );
-		public static readonly Thickness itemMargin = new Thickness( 0, 0, 0, 2 );
+		public static readonly Thickness itemMargin = new Thickness( 10, 0, 0, 2 );
 		public static readonly SolidColorBrush colorSystemField = new SolidColorBrush( Color.FromRgb( 255, 250, 225 ) );
 		public static readonly SolidColorBrush colorImmutable = new SolidColorBrush( Color.FromRgb( 220, 45, 45 ) );
 		public static readonly SolidColorBrush colorInvisible = new SolidColorBrush( Color.FromRgb( 165, 198, 195 ) ); // Brushes.LightGray;
