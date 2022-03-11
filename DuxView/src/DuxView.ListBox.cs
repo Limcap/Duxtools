@@ -12,7 +12,7 @@ namespace Limcap.Duxtools {
 		public class ListBox : StackPanel {
 			public DuxNamedList duxList { get; private set; }
 			public event Action<KeyValueBox> OnItemSelected;
-			public new List<KeyValueBox> Children { get => base.Children.Cast<KeyValueBox>().ToList(); }
+			//public new List<KeyValueBox> Children { get => base.Children.Cast<KeyValueBox>().ToList(); }
 
 			public KeyValueBox SelectedItem { get; protected set; }
 			public int SelectedIndex { get => Children.IndexOf( SelectedItem ); }
@@ -113,7 +113,7 @@ namespace Limcap.Duxtools {
 				OnItemSelected?.Invoke( item );
 			}
 			public void DefineSelectedItem( int index ) {
-				DefineSelectedItem( Children[index] );
+				DefineSelectedItem( Children[index] as KeyValueBox );
 			}
 
 

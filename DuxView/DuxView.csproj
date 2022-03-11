@@ -70,5 +70,11 @@
       <Version>1.0.5</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dux\Dux.csproj">
+      <Project>{ba0e52ff-71d6-4480-bfde-7026d8d334dc}</Project>
+      <Name>Dux</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
